@@ -62,7 +62,8 @@ def main():
     sample_intervals = [1/nyqFreq,
                         1/(2*nyqFreq), 
                         1/(5*nyqFreq),
-                        1/(10*nyqFreq)
+                        1/(10*nyqFreq),
+                        1/(15*nyqFreq)
                         ]
     
     # Generate the signal plots
@@ -73,3 +74,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
