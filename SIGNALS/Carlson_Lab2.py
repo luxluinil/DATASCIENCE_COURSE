@@ -143,18 +143,20 @@ def main():
         freq = base_freq + df
         # generate the signal
         ts, s = pure_sine_signal(freq, intv)
-        # get max frequency
-        max_f = max([(a1 + 2*a2*t + 3*a3*t*t) for t in ts])
+        # get max frequency (constant for pure sine signal)
+        max_f = freq
         # plot the sampled signal
-        plot_sig(ts, s, f'Frequency = {freq:.2f}, Δf = {df:.2f}, max f = {max_f:.2f}')
+        plot_sig(ts, s, 
+              f'Pure Sine Signal.  Frequency = {freq:.2f}, Δf = {df:.2f} (Hz)')
         # plot the periodogram
-        gen_periodo(s, intv, len(ts), f'Frequency = {freq:.2f}, Δf = {df:.2f} (Hz)')
+        gen_periodo(s, intv, len(ts), 
+            f'Pure Sine Periodogram.  Frequency = {freq:.2f}, Δf = {df:.2f} (Hz)')
 
     # PART 2
     # Instantaneous frequency after 1 second
     maxFreq = a1 + 2*a2 + 3*a3
     # Nyquist frequency guess: 2 * max instantaneous frequency
-    nyqFreq = 2 * maxFreq
+    nyqFreq = 2.0 * maxFreq
     # Choose sampling intervals to use
     sample_intervals = [1/nyqFreq,
                         1/(2*nyqFreq), 
@@ -166,9 +168,9 @@ def main():
         # get max frequency
         max_f = max([(a1 + 2*a2*t + 3*a3*t*t) for t in ts])
         # plot the sample
-        plot_sig(ts, fs, f'Signal, Interval = {samp}, max f = {max_f:.2f}')
+        plot_sig(ts, fs, f'Chirp Signal, Interval = {samp}, max f = {max_f:.2f}')
         # Generate the periodograms
-        gen_periodo(fs, samp, len(ts), f'Periodogram, Interval = {samp}')
+        gen_periodo(fs, samp, len(ts), f'Chirp Periodogram, Interval = {samp}')
         # Generate the spectrograms
         #gen_spectro(fs, samp)
     
